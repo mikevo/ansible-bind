@@ -29,6 +29,7 @@ options {
 	   reduce such attack surface 
 	*/
 	recursion yes;
+	allow-recursion { {{ bind_allow_recursion|join('; ') }}; };
 
 	dnssec-enable yes;
 	dnssec-validation yes;

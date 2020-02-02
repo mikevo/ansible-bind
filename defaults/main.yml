@@ -2,7 +2,8 @@
 # defaults file for bind
 bind_listen_ipv4: ["any"]
 bind_listen_ipv6: ["any"]
-bind_allow_query: ["localhost"]
+bind_allow_query: ["any"]
+bind_allow_recursion: ["localhost", "localnets"]
 
 bind_daemon: "named"
 
