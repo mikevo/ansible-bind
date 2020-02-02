@@ -9,6 +9,7 @@ bind_daemon: "named"
 bind_packages:
   - bind
   - bind-utils
+  - firewalld
 
 bind_service_enabled: true
 bind_service_state: started

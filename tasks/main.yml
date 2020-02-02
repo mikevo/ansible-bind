@@ -2,10 +2,8 @@
 # tasks file for bind
 - name: install bind
   package:
-    pkg: "{{ item }}"
+    pkg: "{{ bind_packages }}"
     state: present
-  with_items:
-    - "{{ bind_packages }}"
 
 - name: configure bind
   template:
@@ -17,6 +15,12 @@
     setype: "named_conf_t"
     validate: "named-checkconf %s"
   notify: reload bind
+
+- name: open firewall ports
+  firewalld:
+    service: dns
+    permanent: yes
+    state: enabled
 
 - name: ensure bind is started and enabled on boot
   service:
