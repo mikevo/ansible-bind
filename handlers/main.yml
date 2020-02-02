@@ -1,0 +1,6 @@
+---
+# handlers file for bind
+- name: reload bind
+  service:
+    name: "{{ bind_daemon }}"
+    state: reloaded

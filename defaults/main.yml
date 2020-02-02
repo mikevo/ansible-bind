@@ -1,0 +1,20 @@
+---
+# defaults file for bind
+bind_listen_ipv4: ["any"]
+bind_listen_ipv6: ["any"]
+bind_allow_query: ["localhost"]
+
+bind_daemon: "named"
+
+bind_packages:
+  - bind
+  - bind-utils
+
+bind_service_enabled: true
+bind_service_state: started
+
+bind_zones:
+  - name: "."
+    config:
+      type: hint
+      file: '"named.ca"'

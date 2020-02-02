@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Michael Voetter
+  description: Installs and configures bind
+  company: none
+  license: BSD
+
+  min_ansible_version: 1.2
+
+  platforms:
+    - name: EL
+      versions:
+        - 8
+
+  galaxy_tags: []
+
+dependencies: []

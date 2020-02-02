@@ -1,0 +1,25 @@
+---
+# tasks file for bind
+- name: install bind
+  package:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ bind_packages }}"
+
+- name: configure bind
+  template:
+    src: "named.conf.j2"
+    dest: "/etc/named.conf"
+    owner: "root"
+    group: "named"
+    mode: "u=rw,g=r,o="
+    setype: "named_conf_t"
+    validate: "named-checkconf %s"
+  notify: reload bind
+
+- name: ensure bind is started and enabled on boot
+  service:
+    name: "{{ bind_daemon }}"
+    state: "{{ bind_service_state }}"
+    enabled: "{{ bind_service_enabled }}"
